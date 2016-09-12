@@ -9,11 +9,14 @@ Created on Sat Sep 10 03:23:00 2016
 
 """
 
-import pandas as pd
 from collections import Counter
-from collections import defaultdict
 import itertools
 import math
+import pandas as pd
+
+# pylint: disable=invalid-name
+# pylint: disable=no-member
+# pylint: disable=redefined-outer-name
 
 
 def load_dataset(filename):
@@ -94,6 +97,22 @@ def word_occur(D):
 
 
 def MIW(p_a1b1, p_a0b1, p_a1b0, p_a0b0, p_a1, p_b1, p_a0, p_b0):
+    """Help function to compute mutual information.
+
+    Args:
+        p_a1b1: The probability of a=1, b=1.
+        p_a0b1: The probability of a=0, b=1.
+        p_a1b0: The probability of a=1, b=0.
+        p_a0b0: The probability of a=0, b=0.
+        p_a1: The probability of a=1.
+        p_b1: The probability of b=1.
+        p_a0: The probability of a=0.
+        p_b0: The probability of b=0.
+
+    Returns:
+        Mutual information.
+
+    """
     a = p_a1b1 * math.log2(p_a1b1 / (p_a1 * p_b1))
     b = p_a1b0 * math.log2(p_a1b0 / (p_a1 * p_b0))
     c = p_a0b1 * math.log2(p_a0b1 / (p_a0 * p_b1))
@@ -166,6 +185,15 @@ def occurrence(D):
 
 
 def convertToIndex(names):
+    """Convert strings to indices.
+
+    Args:
+        names: A list of strings.
+
+    Returns:
+        A dictionary mapping strings to indices.
+
+    """
     index = 0
     dic = {}
     for name in names:
