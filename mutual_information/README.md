@@ -8,6 +8,6 @@ The output of function mutual_info.py is:
   The top 5 words which have the highest mutual information with the word “programming” in the collection.
 
 Simply use python3 filename to run code.
-  '''
+  ```
   python3 mutual_info.py
-  '''
+  ```
